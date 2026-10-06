@@ -1,8 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import './Home.css';
+import { clearActiveWorkout } from '../utils/workoutStorage';
 
-function Home({ onBegin }) {
+function Home() {
+  const navigate = useNavigate();
+
+  function beginWorkout() {
+    clearActiveWorkout();
+    navigate('/workout/new');
+  }
+
   return (
     <div className="home-root">
       <header className="home-header">
@@ -20,9 +29,7 @@ function Home({ onBegin }) {
             <div className="card-sub text">Primary action</div>
             <button
               className="begin-button neon-blue text"
-              onClick={() => {
-                if (typeof onBegin === 'function') onBegin();
-              }}
+              onClick={beginWorkout}
             >
               Begin Workout
             </button>
