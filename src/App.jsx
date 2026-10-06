@@ -4,6 +4,8 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Brainrot from "./Components/Brainrot";
 import Home from './Pages/Home';
+import Workout from './Pages/Workout';
+import { clearActiveWorkout } from './utils/workoutStorage';
 
 function App() {
   return (
@@ -11,7 +13,8 @@ function App() {
       <div className="App">
         <nav >
           <NavLink 
-            to="/">
+            to="/"
+            onClick={clearActiveWorkout}>
             Home
           </NavLink>
           <NavLink 
@@ -38,6 +41,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/brainrot" element={<Brainrot />} />
+            <Route path="/workout/new" element={<Workout />} />
           </Routes>
         </div>
       </div>
